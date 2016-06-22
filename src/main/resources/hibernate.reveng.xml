@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="systembank" match-name="banco"/>
+  <table-filter match-catalog="systembank" match-name="cliente"/>
+  <table-filter match-catalog="systembank" match-name="cuenta"/>
+  <table-filter match-catalog="systembank" match-name="login"/>
+  <table-filter match-catalog="systembank" match-name="movimiento"/>
+  <table-filter match-catalog="systembank" match-name="perfil"/>
+  <table-filter match-catalog="systembank" match-name="tipocuenta"/>
+  <table-filter match-catalog="systembank" match-name="tipomovimiento"/>
+</hibernate-reverse-engineering>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-jun-2016 21:40:30 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="mx.com.mentoringit.entities.Tipocuenta" table="tipocuenta" catalog="systembank" optimistic-lock="version">
+        <id name="idTipoCuenta" type="java.lang.Integer">
+            <column name="idTipoCuenta" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="20" not-null="true" />
+        </property>
+        <set name="cuentas" table="cuenta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idTipoCuenta" not-null="true" />
+            </key>
+            <one-to-many class="mx.com.mentoringit.entities.Cuenta" />
+        </set>
+    </class>
+</hibernate-mapping>
