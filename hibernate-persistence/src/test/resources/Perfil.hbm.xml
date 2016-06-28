@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-jun-2016 21:40:30 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="mx.com.mentoringit.entities.Perfil" table="perfil" catalog="PUBLIC" optimistic-lock="version">
+        <id name="idPerfil" type="java.lang.Integer">
+            <column name="idPerfil" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="30" not-null="true" />
+        </property>
+        <set name="logins" table="login" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPerfil" not-null="true" />
+            </key>
+            <one-to-many class="mx.com.mentoringit.entities.Login" />
+        </set>
+    </class>
+</hibernate-mapping>

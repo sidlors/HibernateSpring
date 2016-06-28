@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="mx.com.mentoringit.entities.Banco" table="banco"
+		catalog="PUBLIC" optimistic-lock="version">
+		<id name="idBanco" type="java.lang.Integer">
+			<column name="idBanco" not-null="true"/>
+			<generator class="identity" />
+		</id>
+		<property name="nombre" type="string">
+			<column name="nombre" length="50" not-null="true" />
+		</property>
+		<set name="clientes" table="cliente" inverse="true" lazy="true"
+			fetch="select">
+			<key>
+				<column name="idBanco" not-null="true" />
+			</key>
+			<one-to-many class="mx.com.mentoringit.entities.Cliente" />
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-jun-2016 21:40:30 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="mx.com.mentoringit.entities.Tipocuenta" table="tipocuenta" catalog="systembank" optimistic-lock="version">
+        <id name="idTipoCuenta" type="java.lang.Integer">
+            <column name="idTipoCuenta" />
+            <!-- este atributo native significa que la base de datos asignara el valor -->
+            <generator class="native" />
+            <!-- este atributo identity significa que Hibernate asignara el valor -->
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="20" not-null="true" />
+        </property>
+        
+        <!-- fetch="select" recupera los registros de la tabla relacionada hasta que son solicitados-->
+        <!-- fetch="join" recupera los registros al moemento de cargar la entidad (tipoCuenta) -->
+        <!-- lazy =false siempre ejecuta  dos querys separados a la BD -->
+        <set name="cuentas" table="cuenta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idTipoCuenta" not-null="true" />
+            </key>
+            <one-to-many class="mx.com.mentoringit.entities.Cuenta" />
+        </set>
+    </class>
+</hibernate-mapping>
+
+<!-- 
+
+fetch join
+
+select tipocuenta0_.idTipoCuenta as idTipoCu1_6_0_, 
+tipocuenta0_.nombre as nombre2_6_0_,
+cuentas1_.idTipoCuenta as idTipoCu3_2_1_,
+cuentas1_.idCuenta as idCuenta1_2_1_, 
+cuentas1_.idCuenta as idCuenta1_2_2_, 
+cuentas1_.idCliente as idClient2_2_2_,
+cuentas1_.idTipoCuenta as idTipoCu3_2_2_, 
+cuentas1_.numeroCuenta as numeroCu4_2_2_ 
+from systembank.tipocuenta tipocuenta0_ 
+left outer join systembank.cuenta 
+cuentas1_ on tipocuenta0_.idTipoCuenta=cuentas1_.idTipoCuenta 
+where tipocuenta0_.idTipoCuenta=?
+
+fetch select 
+select tipocuenta0_.idTipoCuenta as idTipoCu1_6_0_, 
+tipocuenta0_.nombre as nombre2_6_0_ 
+from systembank.tipocuenta tipocuenta0_ 
+where tipocuenta0_.idTipoCuenta=?
+
+select cuentas0_.idTipoCuenta as idTipoCu3_2_0_,
+cuentas0_.idCuenta as idCuenta1_2_0_, 
+cuentas0_.idCuenta as idCuenta1_2_1_,
+cuentas0_.idCliente as idClient2_2_1_,
+cuentas0_.idTipoCuenta as idTipoCu3_2_1_, 
+cuentas0_.numeroCuenta as numeroCu4_2_1_ 
+from systembank.cuenta cuentas0_ where cuentas0_.idTipoCuenta=?
+
+
+lazy false
+select tipocuenta0_.idTipoCuenta as idTipoCu1_6_0_, 
+	tipocuenta0_.nombre as nombre2_6_0_ 
+	from systembank.tipocuenta tipocuenta0_ 
+	where tipocuenta0_.idTipoCuenta=?
+
+select 	cuentas0_.idTipoCuenta as idTipoCu3_2_0_,
+		cuentas0_.idCuenta as idCuenta1_2_0_,
+		cuentas0_.idCuenta as idCuenta1_2_1_,
+		cuentas0_.idCliente as idClient2_2_1_,
+		cuentas0_.idTipoCuenta as idTipoCu3_2_1_, 
+		cuentas0_.numeroCuenta as numeroCu4_2_1_ 
+		from systembank.cuenta cuentas0_ 
+		where cuentas0_.idTipoCuenta=?
+ -->

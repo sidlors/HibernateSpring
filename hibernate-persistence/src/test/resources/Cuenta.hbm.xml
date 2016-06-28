@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20-jun-2016 21:40:30 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="mx.com.mentoringit.entities.Cuenta" table="cuenta" catalog="PUBLIC" optimistic-lock="version">
+        <id name="idCuenta" type="java.lang.Integer">
+            <column name="idCuenta" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cliente" class="mx.com.mentoringit.entities.Cliente" fetch="select">
+            <column name="idCliente" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tipocuenta" class="mx.com.mentoringit.entities.Tipocuenta" fetch="select">
+            <column name="idTipoCuenta" not-null="true" />
+        </many-to-one>
+        <property name="numeroCuenta" type="int">
+            <column name="numeroCuenta" not-null="true" />
+        </property>
+        <set name="movimientos" table="movimiento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCuenta" not-null="true" />
+            </key>
+            <one-to-many class="mx.com.mentoringit.entities.Movimiento" />
+        </set>
+    </class>
+</hibernate-mapping>

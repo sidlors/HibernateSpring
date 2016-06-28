@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+
+<query name="reporte.cliente">
+<![CDATA[
+	select NEW mx.com.mentoringit.vo.ReporteClienteVO(
+	cte.nombre,  
+	bco.nombre, 
+	ctas.numeroCuenta,
+	tctas.nombre )
+	from Cliente as cte
+	inner join cte.banco as bco
+	inner join cte.cuentas as ctas
+	inner join ctas.tipocuenta as tctas
+	
+]]>
+</query>
+
+<query name="reporte.cliente.param">
+<![CDATA[
+	select NEW mx.com.mentoringit.vo.ReporteClienteVO(
+	cte.nombre,  
+	bco.nombre, 
+	ctas.numeroCuenta,
+	tctas.nombre )
+	from Cliente as cte
+	inner join cte.banco as bco
+	inner join cte.cuentas as ctas
+	inner join ctas.tipocuenta as tctas
+	with tctas.nombre like :param
+	
+]]>
+</query>
+</hibernate-mapping>
