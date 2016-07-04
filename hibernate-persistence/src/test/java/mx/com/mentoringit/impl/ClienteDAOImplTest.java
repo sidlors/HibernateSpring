@@ -4,21 +4,16 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import org.hibernate.Transaction;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import mx.com.mentoringit.entities.Cliente;
 import mx.com.mentoringit.hibernate_test.AbstractDBTestUnit;
-import mx.com.mentoringit.interfaces.ICliente;
+
 
 public class ClienteDAOImplTest extends AbstractDBTestUnit {
 
 	private Cliente clienteCriterio;
-	private ICliente daoCliente;
 	private ClienteDAOImpl servDAO;
 	private List<Cliente> clientes;
 
@@ -39,7 +34,7 @@ public class ClienteDAOImplTest extends AbstractDBTestUnit {
 
 		try {
 
-			clientes = servDAO.findCliente(Cliente.class);
+			clientes =servDAO.findCliente(Cliente.class);
 			assertTrue(clientes.size() > 0);
 			for (Object object : clientes) {
 				Cliente cliente = (Cliente) object;

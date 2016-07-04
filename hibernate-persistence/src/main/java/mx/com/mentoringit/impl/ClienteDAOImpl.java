@@ -34,7 +34,7 @@ public class ClienteDAOImpl extends GenericDAOimpl<Cliente> implements ICliente 
 	}
 
 	@Override
-	public List findClienteByName(Cliente cliente) throws Exception {
+	public List<Cliente> findClienteByName(Cliente cliente) throws Exception {
 		
 		
 		Transaction t =getSessionFactory().getCurrentSession().beginTransaction();

@@ -8,7 +8,6 @@ import org.hibernate.criterion.Restrictions;
 
 import mx.com.mentoringit.entities.Tipocuenta;
 import mx.com.mentoringit.interfaces.ITipoCuenta;
-import mx.com.mentoringit.util.HibernateUtil;
 
 public class TipoCuentaDAO extends GenericDAOimpl<Tipocuenta> implements ITipoCuenta {
 
@@ -21,7 +20,7 @@ public class TipoCuentaDAO extends GenericDAOimpl<Tipocuenta> implements ITipoCu
 	
 
 	@Override
-	public List findAllCuenta(Tipocuenta tipocuenta) throws Exception {
+	public List<Tipocuenta> findAllCuenta(Tipocuenta tipocuenta) throws Exception {
 
 		return findAll(Tipocuenta.class);
 	}
@@ -42,13 +41,13 @@ public class TipoCuentaDAO extends GenericDAOimpl<Tipocuenta> implements ITipoCu
 
 
 	@Override
-	public List findCuentaByName(Tipocuenta tipocuenta) throws Exception {
+	public List<Tipocuenta> findCuentaByName(Tipocuenta tipocuenta) throws Exception {
 		Transaction t= getSessionFactory().getCurrentSession().beginTransaction();
 		Criteria criteria=getSessionFactory().getCurrentSession().createCriteria(Tipocuenta.class);
 		criteria.add(Restrictions.like("nombre", "P%"));
 		criteria.setMaxResults(10);
 		
-		List lista=criteria.list();
+		List<Tipocuenta> lista=criteria.list();
 		t.commit();
 		return lista;
 	}

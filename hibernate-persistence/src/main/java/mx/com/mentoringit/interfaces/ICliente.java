@@ -13,9 +13,9 @@ public interface ICliente {
 	
 	public List<ReporteClienteVO> obtenerReporteClientes( ) throws Exception;
 	
-	public List findClienteByName(Cliente Cliente) throws Exception;
+	public List<Cliente> findClienteByName(Cliente Cliente) throws Exception;
 	
-	public List findCliente(Class<Cliente> clazz) throws Exception;
+	public List<Cliente> findCliente(Class<Cliente> clazz) throws Exception;
 	
 	public Boolean deleteCliente(Cliente Cliente) throws Exception;
 

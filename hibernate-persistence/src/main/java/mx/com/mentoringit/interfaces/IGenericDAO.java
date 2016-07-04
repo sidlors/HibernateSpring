@@ -8,5 +8,5 @@ public interface IGenericDAO<T> {
 	public void edit(T emp) throws Exception;
 	public T find(Class<T> clase,int idEntity) throws Exception;
 	public Boolean delete(T emp) throws Exception;
-	public List findAll(Class<T> clase) throws Exception;
+	public List<T> findAll(Class<T> clase) throws Exception;
 }

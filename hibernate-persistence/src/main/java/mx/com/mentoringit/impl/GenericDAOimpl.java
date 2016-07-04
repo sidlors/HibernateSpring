@@ -6,7 +6,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import mx.com.mentoringit.interfaces.IGenericDAO;
-import mx.com.mentoringit.util.HibernateUtil;
 
 public class GenericDAOimpl<T> implements IGenericDAO<T> {
 
@@ -89,12 +88,12 @@ public class GenericDAOimpl<T> implements IGenericDAO<T> {
 	}
 
 	@Override
-	public List findAll(Class<T> clase) throws Exception {
+	public List<T> findAll(Class<T> clase) throws Exception {
 		
 		Transaction transaction = sessionFactory.getCurrentSession()
 				.beginTransaction();
 
-		List entities = null;
+		List<T> entities = null;
 		try {
 			entities=sessionFactory.getCurrentSession().createQuery("from " + clase.getName()).list();
 			transaction.commit();

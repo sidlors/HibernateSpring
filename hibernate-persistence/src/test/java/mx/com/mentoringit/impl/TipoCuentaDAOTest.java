@@ -1,16 +1,13 @@
 package mx.com.mentoringit.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import org.hibernate.Transaction;
+import org.junit.Ignore;
 
 import mx.com.mentoringit.entities.Tipocuenta;
 import mx.com.mentoringit.hibernate_test.AbstractDBTestUnit;
 import mx.com.mentoringit.interfaces.ITipoCuenta;
-
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
 
 public class TipoCuentaDAOTest extends AbstractDBTestUnit{
 	
@@ -54,9 +51,6 @@ public class TipoCuentaDAOTest extends AbstractDBTestUnit{
 	
 	@Ignore
 	public void testFindCuenta() {
-		
-		Tipocuenta tipocuentaCriterio=new Tipocuenta();
-		ITipoCuenta daoCuenta= new TipoCuentaDAO();
 		
 		try {
 			

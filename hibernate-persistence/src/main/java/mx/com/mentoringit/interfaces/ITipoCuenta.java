@@ -10,9 +10,9 @@ public interface ITipoCuenta {
 	
 	public Tipocuenta findCuentaById(Class<Tipocuenta> tipocuenta,Integer idEntity) throws Exception;
 	
-	public List findCuentaByName(Tipocuenta tipocuenta) throws Exception;
+	public List<Tipocuenta> findCuentaByName(Tipocuenta tipocuenta) throws Exception;
 	
-	public List findAllCuenta(Tipocuenta tipocuenta) throws Exception;
+	public List<Tipocuenta> findAllCuenta(Tipocuenta tipocuenta) throws Exception;
 	
 	public Boolean deleteCuenta(Tipocuenta tipocuenta) throws Exception;
 
